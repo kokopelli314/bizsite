@@ -3602,10 +3602,9 @@ footer ul.social_icons {
 	border: none;
 }
 
-.contact_us_section .btn.dark_gray_bt:hover,
-.contact_us_section .btn.dark_gray_bt:focus {
-	background: #fff;
-	color: #252525;
+.btn.dark_gray_bt:hover,
+.btn.dark_gray_bt:focus {
+	background: #777;
 	text-shadow: none;
 }
 
