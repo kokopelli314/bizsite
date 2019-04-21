@@ -973,7 +973,7 @@ header .right_bt .btn {
 .logo img {
     height: 35px;
     width: 35px;
-    margin-right: 4px;
+    margin-right: 6px;
     border: 1px solid hsla(211, 100%, 50%, 0.42);
     box-sizing: border-box;
 	border-radius: 50%;
