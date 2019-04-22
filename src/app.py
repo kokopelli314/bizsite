@@ -5,6 +5,9 @@ app = Flask(__name__)
 def homepage():
 	return render_template('index.html')
 
-@app.route('/contact')
-def contact():
+
+@app.route('/contact', defaults={'email_address': None})
+@app.route('/contact/<string:email_address>')
+def contact(email_address):
+	print(email_address)
 	return render_template('contact.html')

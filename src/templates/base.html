@@ -13,26 +13,26 @@
 	<meta name="description" content="Helping businesses with integrated dashboards, task automation, and custom web applications.">
 	<meta name="author" content="Clonts Software Development">
 	<!-- site icons -->
-	<link rel="icon" href="static/images/favicon/favicon.ico" type="image/gif" />
+	<link rel="icon" href="/static/images/favicon/favicon.ico" type="image/gif" />
 	<!-- bootstrap css -->
-	<link rel="stylesheet" href="static/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css" />
 	<!-- Site css -->
-	<link rel="stylesheet" href="static/css/style.css" />
+	<link rel="stylesheet" href="/static/css/style.css" />
 	<!-- responsive css -->
-	<link rel="stylesheet" href="static/css/responsive.css" />
+	<link rel="stylesheet" href="/static/css/responsive.css" />
 	<!-- colors css -->
-	<link rel="stylesheet" href="static/css/colors1.css" />
+	<link rel="stylesheet" href="/static/css/colors1.css" />
 	<!-- custom css -->
-	<link rel="stylesheet" href="static/css/custom.css" />
+	<link rel="stylesheet" href="/static/css/custom.css" />
 	<!-- wow Animation css -->
-	<link rel="stylesheet" href="static/css/animate.css" />
+	<link rel="stylesheet" href="/static/css/animate.css" />
 	<!-- revolution slider css -->
-	<link rel="stylesheet" type="text/css" href="static/revolution/css/settings.css" />
-	<link rel="stylesheet" type="text/css" href="static/revolution/css/layers.css" />
-	<link rel="stylesheet" type="text/css" href="static/revolution/css/navigation.css" />
+	<link rel="stylesheet" type="text/css" href="/static/revolution/css/settings.css" />
+	<link rel="stylesheet" type="text/css" href="/static/revolution/css/layers.css" />
+	<link rel="stylesheet" type="text/css" href="/static/revolution/css/navigation.css" />
 	<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.static/js/1.4.2/respond.min.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond./static/js/1.4.2/respond.min.js"></script>
       <![endif]-->
 </head>
 
@@ -65,7 +65,7 @@
 							</div>
 						</div>
 						<div class="float-right">
-							<div class="make_appo"> <a class="btn white_btn" href="make_appointment.html">Make Appointment</a> </div>
+							<div class="make_appo"> <a class="btn white_btn" href="/contact">Make Appointment</a> </div>
 						</div>
 					</div>
 				</div>
@@ -79,7 +79,7 @@
 					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
 						<!-- logo start -->
 						<div class="logo">
-							<a href="it_home.html"><img src="static/images/logos/logo.png" alt="logo" />
+							<a href="/"><img src="/static/images/logos/logo.png" alt="logo" />
 								<span>
 									<span class="logo-blue">Clonts</span> Software Development
 								</span>
@@ -92,8 +92,8 @@
 						<div class="menu_side">
 							<div id="navbar_menu">
 								<ul class="first-ul">
-									<li> <a class="active" href="index.html">Home</a></li>
-									<li><a href="it_about.html">About Us</a></li>
+									<li><a class="{% block active_home %}{% endblock %}" href="/">Home</a></li>
+									<li><a class="{% block active_about %}{% endblock %}" href="/">About Us</a></li>
 									<!-- <li> <a href="it_service.html">Service</a>
 					<ul>
 						<li><a href="it_service_list.html">Services list</a></li>
@@ -116,7 +116,7 @@
 						<li><a href="it_error.html">Error 404</a></li>
 					</ul>
 					</li> -->
-									<li> <a href="contact">Contact</a></li>
+									<li><a class="{% block active_contact %}{% endblock %}" href="contact">Contact</a></li>
 								</ul>
 							</div>
 							<!-- <div class="search_icon">
@@ -200,14 +200,14 @@
 
 
 <!-- js section -->
-<script src="static/js/jquery.min.js"></script>
-<script src="static/js/bootstrap.min.js"></script>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
 <!-- menu js -->
-<script src="static/js/menumaker.js"></script>
+<script src="/static/js/menumaker.js"></script>
 <!-- wow animation -->
-<script src="static/js/wow.js"></script>
+<script src="/static/js/wow.js"></script>
 <!-- custom js -->
-<script src="static/js/custom.js"></script>
+<script src="/static/js/custom.js"></script>
 
 <!-- map js -->
 <script>
