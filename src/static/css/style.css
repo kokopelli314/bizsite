@@ -342,8 +342,12 @@ button.btn.white_btn,
 }
 
 blockquote {
-	margin: 20px 0 20px;
-	padding: 30px;
+	position: relative;
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 3em 0 0 0;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
 }
 
 .margin_0 {
@@ -3636,11 +3640,11 @@ footer ul.social_icons {
 	background-position: center center;
 }
 
-.cleaning .inner_banner_section {
-	background: url('../images/cleaning_service/inner_page_banner.jpg');
+.about.inner_banner_section {
+	background: url('../images/it_service/about__mike-scheid.jpg');
 	min-height: 245px;
 	background-size: cover;
-	background-position: top center;
+	background-position: center center;
 }
 
 .page-title {
