@@ -199,6 +199,9 @@ $(window).scroll(function(){
     }
 });
 
-	
-	
-	
+$('#send_email_button').click(function() {
+    var email = $('#send_email_address').val();
+    window.location.href = `/contact/${email}`;
+});
+
+

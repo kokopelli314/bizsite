@@ -93,7 +93,7 @@
 							<div id="navbar_menu">
 								<ul class="first-ul">
 									<li><a class="{% block active_home %}{% endblock %}" href="/">Home</a></li>
-									<li><a class="{% block active_about %}{% endblock %}" href="/">About Us</a></li>
+									<li><a class="{% block active_about %}{% endblock %}" href="/about">About Us</a></li>
 									<!-- <li> <a href="it_service.html">Service</a>
 					<ul>
 						<li><a href="it_service_list.html">Services list</a></li>
@@ -165,14 +165,14 @@
 							<p>Fort Collins, Colorado
 								<span style="font-size:18px;"><a href="tel:+9703055622">(970) 305-5622</a></span></p>
 							<div class="footer_mail-section">
-								<form>
-									<fieldset>
-										<div class="field">
-											<input placeholder="Email" type="text">
-											<button class="button_custom"><i class="fa fa-envelope" aria-hidden="true"></i></button>
-										</div>
-									</fieldset>
-								</form>
+								<div>
+									<div class="field">
+										<input id="send_email_address" placeholder="Email" type="text">
+										<button id="send_email_button" class="button_custom">
+											<i class="fa fa-envelope" aria-hidden="true"></i>
+										</button>
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="col-md-6">

@@ -14,20 +14,31 @@ app = Flask(__name__)
 def homepage():
 	return render_template('index.html')
 
+@app.route('/about')
+def about_us():
+	return render_template('about.html')
 
 @app.route('/contact', defaults={'email_address': None}, methods=['get'])
 @app.route('/contact/<string:email_address>', methods=['get'])
 def contact(email_address):
-	form = ContactForm(request.form)
+	if email_address:
+		request.form.email_address = email_address
+	form = ContactForm(request.form, email_address=email_address)
 	return render_template('contact.html', form=form)
 
 @app.route('/contact', methods=['post'])
 def contact_send_message():
 	"""Send a message from the contact form."""
 	form = ContactForm(request.form)
+	success = False
 	if form.validate():
+		success = True
 		sendEmail(form)
-	return render_template('contact.html', form=form)
+	user_message = (
+		'Your message was sent successfully! Thank you.' if success
+		else 'An error occurred while trying to send your message. Please try again later, or contact us directly by email or phone.'
+	)
+	return render_template('contact.html', form=form, user_message=user_message)
 
 
 class ContactForm(Form):
