@@ -6,6 +6,7 @@ import urllib.request
 import smtplib
 from typing import NamedTuple, Union
 from wtforms import Form, StringField, validators, TextAreaField
+from wtforms.fields.html5 import EmailField
 
 app = Flask(__name__)
 
@@ -34,6 +35,8 @@ def contact_send_message():
 	if form.validate():
 		success = True
 		sendEmail(form)
+		# clear the form
+		form = ContactForm()
 	user_message = (
 		'Your message was sent successfully! Thank you.' if success
 		else 'An error occurred while trying to send your message. Please try again later, or contact us directly by email or phone.'
@@ -43,7 +46,9 @@ def contact_send_message():
 
 class ContactForm(Form):
 	name = StringField('Name', [validators.DataRequired()])
-	email_address = StringField('Email Address', [validators.DataRequired()])
+	email_address = EmailField('Email Address', [
+		validators.DataRequired(), validators.Email(),
+	])
 	business_name = StringField('Business Name (optional)', [])
 	phone_number = StringField('Phone Number (optional)', [])
 	message = TextAreaField('Message', [validators.DataRequired()])
@@ -54,7 +59,7 @@ def sendEmail(submission: ContactForm):
 	username = config('SMTP_USERNAME')
 	password = config('SMTP_PASSWORD')
 	sender = config('EMAIL_FROM')
-	receivers = submission.email_address.data
+	receivers = config('EMAIL_TO')
 
 	msg = MIMEMultipart()
 	msg['From'] = sender
