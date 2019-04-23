@@ -1,10 +1,11 @@
 from decouple import config
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import urllib.request
 import smtplib
-from typing import NamedTuple
+from typing import NamedTuple, Union
+from wtforms import Form, StringField, validators, TextAreaField
 
 app = Flask(__name__)
 
@@ -14,33 +15,40 @@ def homepage():
 	return render_template('index.html')
 
 
-@app.route('/contact', defaults={'email_address': None})
-@app.route('/contact/<string:email_address>')
+@app.route('/contact', defaults={'email_address': None}, methods=['get'])
+@app.route('/contact/<string:email_address>', methods=['get'])
 def contact(email_address):
-	print(email_address)
-	return render_template('contact.html', email_address=email_address)
+	form = ContactForm(request.form)
+	return render_template('contact.html', form=form)
+
+@app.route('/contact', methods=['post'])
+def contact_send_message():
+	"""Send a message from the contact form."""
+	form = ContactForm(request.form)
+	if form.validate():
+		sendEmail(form)
+	return render_template('contact.html', form=form)
 
 
-class ContactFormSubmission(NamedTuple):
-	email_address: str
-	message: str
-	name: str
-	business_name: str | None
-	phone_number: str | None
-	timestamp: any
+class ContactForm(Form):
+	name = StringField('Name', [validators.DataRequired()])
+	email_address = StringField('Email Address', [validators.DataRequired()])
+	business_name = StringField('Business Name (optional)', [])
+	phone_number = StringField('Phone Number (optional)', [])
+	message = TextAreaField('Message', [validators.DataRequired()])
 
-def sendEmail(submission: ContactFormSubmission):
+def sendEmail(submission: ContactForm):
 	host = config('SMTP_HOST')
 	port = config('SMTP_PORT')
 	username = config('SMTP_USERNAME')
 	password = config('SMTP_PASSWORD')
 	sender = config('EMAIL_FROM')
-	receivers = submission.email_address
+	receivers = submission.email_address.data
 
 	msg = MIMEMultipart()
 	msg['From'] = sender
 	msg['To'] = receivers
-	msg['Subject'] = 'Clonts Software Development Message - %s' % submission.name
+	msg['Subject'] = 'Clonts Software Development Message - %s' % submission.name.data
 
 	body = """
 	New contact form message:
@@ -50,11 +58,11 @@ def sendEmail(submission: ContactFormSubmission):
 	Phone Number: %s
 	Message: %s
 	""" % (
-		submission.name,
-		submission.email_address,
-		submission.business_name,
-		submission.phone_number,
-		submission.message,
+		submission.name.data,
+		submission.email_address.data,
+		submission.business_name.data,
+		submission.phone_number.data,
+		submission.message.data,
 	)
 	msg.attach(MIMEText(body))
 

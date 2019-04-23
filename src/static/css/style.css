@@ -217,7 +217,7 @@ a,
 	width: 100%;
 }
 
-a.btn,
+.btn,
 button.btn {
 	min-width: 170px;
 	height: 50px;
@@ -240,22 +240,22 @@ button.btn {
 	background: #252525;
 }
 
-a.btn.border_btn {
+.btn.border_btn {
 	border: solid transparent 1px;
 	background: transparent;
 }
 
-a.btn:hover,
+.btn:hover,
 button.btn:hover,
-a.btn:focus,
+.btn:focus,
 button.btn:focus {
 	background: #252525;
 	color: #fff;
 }
 
 button.btn.white_btn,
-a.btn.white_btnbutton.btn.white_btn,
-a.btn.white_btn {
+.btn.white_btnbutton.btn.white_btn,
+.btn.white_btn {
 	background: #fff;
 	padding: 0 50px;
 }
